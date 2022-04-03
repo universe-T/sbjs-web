@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>个人社保计算器-Web版</title>
+		<!-- 新 Bootstrap 核心 CSS 文件 -->
+<link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+ 
+<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+ 
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script>
+		function calc() {
+			//1.从文本框中取出工资值
+			sal = $("#salary").val();
+			salnum = parseInt(sal);
+			//2.开始计算
+			ylgr = salnum * 0.08;
+			ylgs = salnum * 0.2;
+			ybgr = salnum * 0.02;
+			ybgs = salnum * 0.06;
+			sygr = salnum * 0.005;
+			sygs = salnum * 0.015;
+			gsgs = salnum * 0.005;
+ 			sybx = salnum * 0.008;
+ 			gjjgr = salnum * 0.12;
+ 			gjjgs = salnum * 0.12;
+			//3.把结果放到单元格里
+			$("#ylgr").text(ylgr);
+			$("#ylgs").text(ylgs);
+			$("#ybgr").text(ybgr);
+			$("#ybgs").text(ybgs);
+			$("#sygr").text(sygr);
+			$("#sygs").text(sygs);
+			$("#gsgs").text(gsgs);
+			$("#sybx").text(sybx);
+			$("#gjjgr").text(gjjgr);
+			$("#gjjgs").text(gjjgs);
+			grhj = ylgr+ybgr+sygr+gjjgr;
+			$("#grhj").text(grhj);
+			gshj = ylgs+ybgs+sygs+gsgs+sybx+gjjgs;
+			$("#gshj").text(gshj);
+			$("#total").text(salnum+gshj);
+		}
+	</script>
+	</head>
+	<body>
+		<div class="container text-center">
+			<h1>个人社保计算-田宇宙</h1>
+			<table class="table table-bordered text-center">
+				<tr>
+					<td>工资</td>
+					<td colspan="3">
+						<input id="salary" class="form-control" type="text" placeholder="请输入工资" />
+					</td>
+					<td>
+						<button onclick="calc()" class="btn btn-danger btn-block">计算</button>
+					</td>
+				</tr>
+				<tr class="bg-primary">
+					<td>险种</td>
+					<td>个人%</td>
+					<td>个人</td>
+					<td>公司%</td>
+					<td>公司</td>
+				</tr>
+				<tr>
+					<td>养老</td>
+					<td>8%</td>
+					<td id="ylgr"></td>
+					<td>20%</td>
+					<td id="ylgs"></td>
+				</tr>
+				<tr>
+					<td>医保</td>
+					<td>2%</td>
+					<td id="ybgr"></td>
+					<td>6%</td>
+					<td id="ybgs"></td>
+				</tr>
+				<tr>
+					<td>失业</td>
+					<td>0.5%</td>
+					<td id="sygr"></td>
+					<td>1.5%</td>
+					<td id="sygs"></td>
+				</tr>
+				<tr>
+					<td>工伤</td>
+					<td></td>
+					<td id="gsgr"></td>
+					<td>0.5%</td>
+					<td id="gsgs"></td>
+				</tr>
+				<tr>
+					<td>生育</td>
+					<td></td>
+					<td id="sygr"></td>
+					<td>0.8%</td>
+					<td id="sybx"></td>
+				</tr>
+				<tr>
+					<td>公积金</td>
+					<td>12%</td>
+					<td id="gjjgr"></td>
+					<td>12%</td>
+					<td id="gjjgs"></td>
+				</tr>
+				<tr>
+					<td>合计</td>
+					<td>个人合计</td>
+					<td id="grhj"></td>
+					<td>公司合计</td>
+					<td id="gshj"></td>
+				</tr>
+				<tr>
+					<td>总额</td>
+					<td colspan="4" id="total"></td>
+				</tr>
+			</table>
+		</div>
+	</body>
+</html>
